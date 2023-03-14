@@ -81,7 +81,7 @@ for key, value in sorted(coefficients.items(), key=lambda x: np.abs(x[1]), rever
     print('{0}: {1:.2f}'.format(key, value))
 
 #plot dependence of success chance on total amount of expedition members
-#we only investigate 
+#we only investigate team sizes up to 30, as the EDA has shown teams exceeding this size to be rare.
 X_train, X_test, Y_train, Y_test = train_test_split(scaled_X, Y, test_size = 0.1, shuffle=True)
 model = LogisticRegression(C = optC).fit(X_train, Y_train)
 modedata = exp.mode().iloc[0]
@@ -105,7 +105,7 @@ for i in range(30):
 plt.clf()
 hm = sns.heatmap(z, vmin = 0, annot=False, fmt='.0%')
 hm.set_yticklabels(np.arange(1, 31, 2))
-plt.ylabel('total members (without hired personel)')
+plt.ylabel('total members (without hired personnel)')
 plt.xlabel('total hired personal')
 plt.title('Expedition success chance by team size')
 plt.show()

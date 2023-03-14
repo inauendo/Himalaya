@@ -99,7 +99,7 @@ def EDA_year(exp, plotpath = None):
 
 def EDA_members(exp, plotpath = None):
     '''perform EDA to examine correlations between ascension success and team sizes.'''
-    #Create a view comparing successful and successful expeditions per membercount and hired personel count
+    #Create a view comparing successful and successful expeditions per membercount and hired personnel count
     memberview = exp.groupby('totmembers').success.agg(['sum', 'count'])
     memberview = memberview.rename(columns={'sum': 'successes', 'count': 'total'})
     memberview['ratio'] = memberview.successes / memberview.total
@@ -113,7 +113,7 @@ def EDA_members(exp, plotpath = None):
     plt.bar(memberview.index, memberview.total, color='r', label = 'Failed attempts')
     plt.bar(memberview.index, memberview.successes, color='k', label = 'Successful attempts')
     plt.title('Ascension attempts per expedition member count')
-    plt.xlabel('Expedition members (no hired personel)')
+    plt.xlabel('Expedition members (no hired personnel)')
     plt.legend()
     if plotpath == None:
         plt.show()
@@ -124,8 +124,8 @@ def EDA_members(exp, plotpath = None):
     plt.clf()
     plt.bar(hiredview.index, hiredview.total, color='r', label = 'Failed attempts')
     plt.bar(hiredview.index, hiredview.successes, color='k', label = 'Successful attempts')
-    plt.title('Ascension attempts per hired personel count')
-    plt.xlabel('Hired personel')
+    plt.title('Ascension attempts per hired personnel count')
+    plt.xlabel('Hired personnel')
     plt.legend()
     if plotpath == None:
         plt.show()
