@@ -54,7 +54,7 @@ For the analysis of the classification model, we will thus limit team sizes to 3
 The logistic fit first performs stratified K-fold cross-validation in order to find the best regularization parameter. The results are printed to the console. Then, the 10 most influential fields are identified and printed to console as well. Most notable is the strong importance of **oxygen use during the ascent**. Additionally, the **total amount of expedition members** seems to be an important feature, as will be explored later on. Further important features are **oxygen use during sleep** and **peak traversal**, both helping success chances. Surprisingly, the **season in which the expedition takes place bears almost no signifcance to its outcome**. The other factors which were investigated were not found to have significant impact on the success chances.
 
 The following plots shows predicted success chances of an average Himalaya expedition with respect to the amount of expedition members and hired personnel:
-![heatmap](success_chance_team_size.png)
+![heatmap](plots/success_chance_team_size.png)
 
 The plot was limited to these party sizes as expeditions with larger parties are rare, as found during EDA. Although barely visible in this plot, the success chance of an expedition begins to decrease again with increasing member count after a certain threshold (towards the bottom of the plot). Interestingly, while **hiring more personnel seems to always increase success chances, increasing the amount of expedition members only helps up to a certain limit - after which bringing more people will results in lower chances of success**.
 
