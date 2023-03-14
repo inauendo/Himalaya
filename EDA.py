@@ -3,8 +3,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
-def EDA_peaks(exp, plotpath = None):
-    '''Performs EDA comparing ascension attempts and successes per peak in the region.'''
+def EDA_peaks(exp: pd.DataFrame, plotpath : str = None) -> None:
+    '''Performs EDA comparing ascension attempts and successes per peak in the region.
+    parameters
+    ----------
+    exp: pd.DataFrame
+        DataFrame object holding the Himalaya data.
+        
+    plotpath: str
+        path to the directoy where plots should be saved.'''
     #Create a view comparing successful and successful expeditions per peak
     peakview = exp.groupby('peakid').success.agg(['sum', 'count'])
     peakview = peakview.rename(columns={'sum': 'successes', 'count': 'total'})
@@ -47,8 +54,16 @@ def EDA_peaks(exp, plotpath = None):
     else:
         plt.savefig(plotpath+'/successratio_distribution.png', dpi=640)
 
-def EDA_year(exp, plotpath = None):
-    '''perform EDA for ascensions per year.'''
+def EDA_year(exp: pd.DataFrame, plotpath: str = None) -> None:
+    '''perform EDA for ascensions per year.
+    parameters
+    ----------
+    exp: pd.DataFrame
+        DataFrame object holding the Himalaya data.
+        
+    plotpath: str
+        path to the directoy where plots should be saved.'''
+    
     #Create a view comparing successful and successful expeditions per year
     yearview = exp.groupby('year').success.agg(['sum', 'count'])
     yearview = yearview.rename(columns={'sum': 'successes', 'count': 'total'})
@@ -97,8 +112,16 @@ def EDA_year(exp, plotpath = None):
     else:
         plt.savefig(plotpath+'/success_ratio_per_year.png', dpi=640)
 
-def EDA_members(exp, plotpath = None):
-    '''perform EDA to examine correlations between ascension success and team sizes.'''
+def EDA_members(exp: pd.DataFrame, plotpath: str = None) -> None:
+    '''perform EDA to examine correlations between ascension success and team sizes.
+    parameters
+    ----------
+    exp: pd.DataFrame
+        DataFrame object holding the Himalaya data.
+        
+    plotpath: str
+        path to the directoy where plots should be saved.'''
+    
     #Create a view comparing successful and successful expeditions per membercount and hired personnel count
     memberview = exp.groupby('totmembers').success.agg(['sum', 'count'])
     memberview = memberview.rename(columns={'sum': 'successes', 'count': 'total'})
